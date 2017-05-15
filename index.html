@@ -2,7 +2,40 @@
 <html>
 <head>
   <title>Full Stack Project</title>
+  <link rel="stylesheet" type="text/css" href="style.css"></style>
+<script>
+
+function phpIntoDiv(url, divId) {
+  httpGetAsync(url, textIntoDiv, divId);
+}
+
+function httpGetAsync(url, callbackWhenPageLoaded, divId) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callbackWhenPageLoaded(xmlHttp.responseText, divId);
+    }
+    xmlHttp.open("GET", url, true); // true for asynchronous
+    xmlHttp.send(null);
+}
+
+textIntoDiv(text, divId) {
+  document.getElementById(divId).innerHTML = text;
+}
+
+</script>
 </head>
 <body>
+  <div class="col-3">
+    <div class = "row col-12 row-4">
+      Hello my dude
+    </div>
+    <div class = "row col-12 row-4">
+    </div>
+    <div class = "row col-12 row-4">
+    </div>
+  </div>
+  <div class="col-9">
+  </div>
 </body>
 </html>
