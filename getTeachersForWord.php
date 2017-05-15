@@ -22,7 +22,7 @@ try {
 
 	$wordId = $wordIdSQLResult[0]['id'];
 
-	$getTeachersPairedWithWordSQL = "SELECT * FROM teachertoword WHERE word='$wordId'";
+	$getTeachersPairedWithWordSQL = "SELECT * FROM teachertoword WHERE word='$wordId' ORDER BY count DESC";
 	$getTeachersPairedWithWordSQLResult = $conn->query($getTeachersPairedWithWordSQL)->fetchAll();
 
 	if (sizeof($getTeachersPairedWithWordSQLResult) == 0) {
