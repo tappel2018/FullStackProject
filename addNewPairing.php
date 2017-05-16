@@ -1,6 +1,4 @@
 <html>
-<head><title>Add New Pair</title></head>
-
 <body>
 
 <?php
