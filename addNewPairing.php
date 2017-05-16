@@ -34,7 +34,7 @@ try {
 		$conn->exec($submitNewTeacherSQL);
 	}
 
-	$getTeacherIdSQL = "SELECT * FROM teachers"
+	$getTeacherIdSQL = "SELECT * FROM teachers";
 
 	$getIfPairingExistsSQL = "SELECT * FROM teachertoword WHERE teacher='$teacher' AND word='$word'";
 	$pairingExistsResult = $conn->query($getIfPairingExistsSQL)->fetchAll();
