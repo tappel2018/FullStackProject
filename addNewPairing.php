@@ -6,6 +6,8 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 
+//dear god help me I hate php so much
+
 try {
 	$conn = new PDO("mysql:host=$servername;dbname=teacherwordpairings", $username, $password);	
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
