@@ -3,7 +3,9 @@
 }
 
 html, body {
-  height: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 tr {
@@ -49,28 +51,53 @@ table {
 .col-12 {width: 100%;}
 [class*="col-"] {
     float: left;
-    padding: 15px;
-    border: 1px solid red;
+    padding: 0;
 }
 .row::after {
     content: "";
     clear: both;
     display: table;
 }
-.row-1 {height: 8.33%;}
-.row-2 {height: 16.66%;}
-.row-3 {height: 25%;}
-.row-4 {height: 33.33%;}
-.row-5 {height: 41.66%;}
-.row-6 {height: 50%;}
-.row-7 {height: 58.33%;}
-.row-8 {height: 66.66%;}
-.row-9 {height: 75%;}
-.row-10 {height: 83.33%;}
-.row-11 {height: 91.66%;}
-.row-12 {height: 100%;}
+.row-1 {height: 8.33vh;}
+.row-2 {height: 16.66vh;}
+.row-3 {height: 25vh;}
+.row-4 {height: 33.33vh;}
+.row-5 {height: 41.66vh;}
+.row-6 {height: 50vh;}
+.row-7 {height: 58.33vh;}
+.row-8 {height: 66.66vh;}
+.row-9 {height: 75vh;}
+.row-10 {height: 83.33vh;}
+.row-11 {height: 91.66vh;}
+.row-12 {height: 100vh;}
 [class*="row-"] {
     float: left;
-    padding: 15px;
-    border: 1px solid red;
+    padding: 0;
+}
+
+.bordered {
+  border: 1px solid black;
+  border-bottom: 0;
+  border-right: 0;
+  height: 100%;
+  padding: 0;
+}
+
+.centered {
+  text-align: center;
+}
+
+.padded {
+  padding-top: 0.5em;
+}
+
+.relative {
+  position: relative;
+}
+
+.vert-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -5,8 +5,27 @@
   <link rel="stylesheet" type="text/css" href="style.css"></style>
 <script>
 
-function phpIntoDiv(url, divId) {
-  httpGetAsync(url, textIntoDiv, divId);
+headers = "";
+
+function phpIntoDiv(url, divId, formId) {
+
+  var children = document.getElementById(formId).childNodes;
+
+  headers = "?";
+
+  children.forEach(function(currentValue, currentIndex, listObj, argument) {
+    if (currentValue.value == undefined || currentValue.type != "text") {
+      return;
+    }
+    if (currentIndex != 0) {
+      headers += "&";
+    }
+    headers += currentValue.name + "=" + currentValue.value;
+  })
+
+  console.log(url + headers);
+
+  httpGetAsync(url + headers, textIntoDiv, divId);
 }
 
 function httpGetAsync(url, callbackWhenPageLoaded, divId) {
@@ -19,23 +38,43 @@ function httpGetAsync(url, callbackWhenPageLoaded, divId) {
     xmlHttp.send(null);
 }
 
-textIntoDiv(text, divId) {
+function textIntoDiv(text, divId) {
   document.getElementById(divId).innerHTML = text;
 }
 
 </script>
 </head>
 <body>
-  <div class="col-3">
-    <div class = "row col-12 row-4">
-      Hello my dude
+  <div class="row">
+    <div class="col-5">
+      <div class = "row col-12 row-4">
+        <div class="bordered centered padded relative">
+          <div class="vert-centered">
+            <h3>Teacher-Word Pair</h3>
+            <form id="form1" onsubmit="phpIntoDiv('addNewPairing.php', 'phpPane', 'form1');" target="#">
+              Word: <input type="text" name="word" id="word">
+              Teacher: <input type="text" name="teacher" id="teacher">
+              <input type="submit">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class = "row col-12 row-4">
+        <div class="bordered centered padded">
+          2 many divs
+        </div>
+      </div>
+      <div class = "row col-12 row-4">
+        <div class="bordered centered padded">
+          2 many divs
+        </div>
+      </div>
     </div>
-    <div class = "row col-12 row-4">
+    <div class="col-7 row-12" id="phpPane">
+      <div class="bordered centered padded">
+          2 many divs
+      </div>
     </div>
-    <div class = "row col-12 row-4">
-    </div>
-  </div>
-  <div class="col-9">
   </div>
 </body>
 </html>
