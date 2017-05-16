@@ -9,23 +9,33 @@ headers = "";
 
 function phpIntoDiv(url, divId, formId) {
 
-  var children = document.getElementById(formId).childNodes;
+  var children = document.getElementById(formId).getElementsByTagName("input");
 
   headers = "?";
+  console.log(children);
+  console.log(formId);
+  console.log(divId);
+  console.log(document.getElementById(formId))
 
-  children.forEach(function(currentValue, currentIndex, listObj, argument) {
-    if (currentValue.value == undefined || currentValue.type != "text") {
-      return;
+  for (var i = 0; i < children.length; i++) {
+    if (children[i].value == undefined || children[i].type != "text") {
+      continue;
     }
-    if (currentIndex != 0) {
+    if (i != 0) {
       headers += "&";
     }
-    headers += currentValue.name + "=" + currentValue.value;
-  })
+    headers += children[i].name + "=" + children[i].value;
 
+    children[i].value = "";
+
+    console.log(i);
+
+  }
+  console.log("log");
   console.log(url + headers);
 
   httpGetAsync(url + headers, textIntoDiv, divId);
+
 }
 
 function httpGetAsync(url, callbackWhenPageLoaded, divId) {
@@ -51,28 +61,52 @@ function textIntoDiv(text, divId) {
         <div class="bordered centered padded relative">
           <div class="vert-centered">
             <h3>Teacher-Word Pair</h3>
-            <form id="form1" onsubmit="phpIntoDiv('addNewPairing.php', 'phpPane', 'form1');" target="#">
-              Word: <input type="text" name="word" id="word">
-              Teacher: <input type="text" name="teacher" id="teacher">
+            <form id="form1" onsubmit="phpIntoDiv('addNewPairing.php', 'phpPane', 'form1');return false;" target="#">
+              <div>Word:</div>
+              <div>
+                <input type="text" name="word" >
+              </div>
+              <div>Teacher:</div>
+              <div>
+                <input type="text" name="teacher" id="teacher">
+              </div>
               <input type="submit">
             </form>
           </div>
         </div>
       </div>
       <div class = "row col-12 row-4">
-        <div class="bordered centered padded">
-          2 many divs
+        <div class="bordered centered padded relative">
+          <div class="vert-centered">
+            <h3>Lookup Word</h3>
+            <form id="form2" onsubmit="phpIntoDiv('getTeachersForWord.php', 'phpPane', 'form2');return false;" target="#">
+              <div>Word:</div>
+              <div>
+                <input type="text" name="word">
+              </div>
+              <input type="submit">
+            </form>
+          </div>
         </div>
       </div>
       <div class = "row col-12 row-4">
-        <div class="bordered centered padded">
-          2 many divs
+        <div class="bordered centered padded relative">
+          <div class="vert-centered">
+            <h3>Teacher-Word Pair</h3>
+            <form id="form3" onsubmit="phpIntoDiv('getWordsForTeacher.php', 'phpPane', 'form3');return false;" target="#">
+              <div>Teacher:</div>
+              <div>
+                <input type="text" name="teacher" id="teacher">
+              </div>
+              <input type="submit">
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-7 row-12" id="phpPane">
-      <div class="bordered centered padded">
-          2 many divs
+    <div class="col-7 row-12">
+      <div class="bordered centered padded" id="phpPane">
+          Your data will display here.
       </div>
     </div>
   </div>
