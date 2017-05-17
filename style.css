@@ -25,7 +25,7 @@ td {
   border-style: solid;
 }
 
-table:nth-child(2n+3) {
+tbody:nth-child(2n) {
   background-color: #EEEEEE;
 }
 
@@ -34,6 +34,7 @@ table {
   border-color: black;
   border-width: thin;
   border-style: solid;
+  margin: auto;
 }
 
 
@@ -85,6 +86,9 @@ table {
 
 .centered {
   text-align: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
 }
 
 .padded {
@@ -104,8 +108,8 @@ table {
 
 .gradient {
   background: red; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, lightblue,lightblue,white); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(left, lightblue,lightblue,white); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(left, lightblue,lightblue,white); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(left, lightblue,lightblue,white); /* Standard syntax */
+    background: -webkit-linear-gradient(left, lightblue 75%,white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, lightblue 75%,white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, lightblue 75%,white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(left, lightblue 75%,white); /* Standard syntax */
 }
